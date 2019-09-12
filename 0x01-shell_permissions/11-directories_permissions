@@ -1,2 +1,2 @@
 #!/bin/bash
-find ./* -type d -exec chmod -R ugo+x {} \;
+find ./* -maxdepth 0 -type d -exec chmod ugo+x {} \;
