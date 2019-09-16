@@ -1,3 +1,3 @@
-# 0-Help
+# 0-alias
 
-Create an alias
+Create an alias to remove all files
