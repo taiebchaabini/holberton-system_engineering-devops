@@ -2,7 +2,7 @@
 # Bash script that displays Holberton School 10 times, but for the 9th iteration, displays Holberton School and then Hi on a new line.
 ((i))
 i=0
-until [ $i -gt 9 ]
+while [ $i -lt 10 ]
     do
 	((i++))
 	echo "Holberton School" 
