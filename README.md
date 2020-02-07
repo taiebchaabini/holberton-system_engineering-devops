@@ -89,7 +89,7 @@ What does LTS mean?
 
 ```
 
-# Commands in unix
+# Commands in linux
 - awk # pattern scanning and processing language
 - basename # strip directory and suffix from filenames
 - bg # resumes suspended jobs without bringing them to the foreground
