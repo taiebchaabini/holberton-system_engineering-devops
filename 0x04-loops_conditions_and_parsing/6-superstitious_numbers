@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# Bash script that loops from 1 to 10 and displays bad luck for the 4th loop iteration, good luck for the 8th loop iteration olberton School for the other iterations
+((i))
+i=0
+while [ $i -lt 20 ]
+    do
+	((i++))
+	echo "$i"
+	if [ $i -eq 4 ]; then
+		echo "bad luck from China"
+	elif [ $i -eq 9 ]; then
+		echo "bad luck from Japan"
+	elif [ $i -eq 17 ]; then
+		echo "bad luck from Italy"
+	fi
+    done
