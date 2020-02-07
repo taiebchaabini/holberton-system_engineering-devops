@@ -4,6 +4,7 @@ $cline
 $username
 $passwd
 $userid
+$useridinfo
 $homedir
 $cmdshell
 while IFS= read -r line; do
@@ -11,7 +12,9 @@ while IFS= read -r line; do
 	username=$( echo "$cline" | cut -f1 -d : )
 	passwd=$( echo "$cline" | cut -f2 -d : )
 	userid=$( echo "$cline" | cut -f3 -d : )
+	useridinfo=$( echo "$cline" | cut -f5 -d : )
 	homedir=$( echo "$cline" | cut -f6 -d : )
 	cmdshell=$( echo "$cline" | cut -f7 -d : )
-	echo "The user $username is part of the $userid gang, lives in $homedir and rides $cmdshell. $userid's place is protected by the passcode $passwd, more info about the user here: $username"
+
+	echo "The user $username is part of the $userid gang, lives in $homedir and rides $cmdshell. $userid's place is protected by the passcode $passwd, more info about the user here: $useridinfo"
 done < "/etc/passwd"
