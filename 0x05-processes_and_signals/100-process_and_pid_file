@@ -21,5 +21,4 @@ trap msgint SIGINT
 trap sigq SIGQUIT
 while true; do
     echo "To infinity and beyond"
-    sleep 2
 done
