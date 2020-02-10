@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+$filename;
+filename="/var/run/holbertonscript.pid"
+touch $filename
+echo "$$" > $filename 
+msgterm()
+{
+    sudo rm /var/run/holbertonscript.pid
+    echo "I hate the kill command"
+}
+msgint()
+{
+    echo "Y U no love me?!"
+}
+sigq()
+{
+    sudo rm /var/run/holbertonscript.pid
+}
+trap msgterm SIGTERM
+trap msgint SIGINT
+trap sigq SIGQUIT
+while true; do
+    echo "To infinity and beyond"
+    sleep 2
+done
