@@ -1,12 +1,17 @@
 #!/usr/bin/env bash
+$pid;
 $filename;
 filename="/var/run/holbertonscript.pid"
 touch $filename
 echo "$$" > $filename 
+pid=$$
 msgterm()
 {
-    sudo rm /var/run/holbertonscript.pid
+    if [[ -e $filename ]]; then
+        sudo rm /var/run/holbertonscript.pid
+    fi
     echo "I hate the kill command"
+    kill -9 $pid
 }
 msgint()
 {
@@ -14,7 +19,10 @@ msgint()
 }
 sigq()
 {
+    if [[ -e $filename ]]; then
     sudo rm /var/run/holbertonscript.pid
+    fi
+    kill -9 $pid
 }
 trap msgterm SIGTERM
 trap msgint SIGINT
