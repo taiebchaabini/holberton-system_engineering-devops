@@ -15,7 +15,6 @@ stopfn()
 {
     if [[ -e $filename ]]; then
         ppid=$(cat $filename)
-        ppid=$((ppid+2))
         kill "$ppid"
         rm /var/run/my_process.pid
     fi
@@ -28,12 +27,13 @@ stopfn()
 }
 startfn()
 {
-    sudo -b ./manage_my_process & jobs -p > $filename
+    nohup ./manage_my_process > /dev/null 2>1 &
+    echo "$!" > $filename
 }
 case "$1" in
     stop)
-        stopfn
         echo "manage_my_process stopped"
+        stopfn
         ;;
     start)
         startfn
