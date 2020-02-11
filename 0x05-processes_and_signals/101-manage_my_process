@@ -19,12 +19,12 @@ stopfn()
         kill "$ppid"
         rm /var/run/my_process.pid
     fi
-    i=$(pgrep bash -la | grep -c ./manage_my_process)
-    while ((i > 0)); do
-        ppid=$(pgrep bash -la | grep ./manage_my_process | tail -n 1 | cut -f1 -d ' ')
-        kill "$ppid"
-        i=$(pgrep bash -la | grep -c ./manage_my_process)
-    done
+    #i=$(pgrep bash -la | grep -c ./manage_my_process)
+    #while ((i > 0)); do
+    #    ppid=$(pgrep bash -la | grep ./manage_my_process | tail -n 1 | cut -f1 -d ' ')
+    #    kill "$ppid"
+    #    i=$(pgrep bash -la | grep -c ./manage_my_process)
+    #done
 }
 startfn()
 {
@@ -36,8 +36,8 @@ case "$1" in
         echo "manage_my_process stopped"
         ;;
     start)
-        echo "manage_my_process started"
         startfn
+        echo "manage_my_process started"
     ;;
      restart)
          stopfn
