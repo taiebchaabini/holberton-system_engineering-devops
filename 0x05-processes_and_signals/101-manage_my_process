@@ -3,39 +3,48 @@
 $nbargs;
 $filename;
 $ppid;
+$i;
+i=0
 nbargs=${#@}
-if ((nbargs == 0)); then
+if ((nbargs == 0)) || ((nbargs > 1)); then
     echo "Usage: manage_my_process {start|stop|restart}"
     exit;
 fi
 filename="/var/run/my_process.pid"
+stopfn()
+{
+    if [[ -e $filename ]]; then
+        ppid=$(cat $filename)
+        ppid=$((ppid+2))
+        kill "$ppid"
+        rm /var/run/my_process.pid
+    fi
+    i=$(pgrep bash -la | grep -c ./manage_my_process)
+    while ((i > 0)); do
+        ppid=$(pgrep bash -la | grep ./manage_my_process | tail -n 1 | cut -f1 -d ' ')
+        kill "$ppid"
+        i=$(pgrep bash -la | grep -c ./manage_my_process)
+    done
+}
+startfn()
+{
+    sudo -b ./manage_my_process & jobs -p > $filename
+}
 case "$1" in
     stop)
-        if [[ -e $filename ]]; then
-            ppid=$(cat $filename)
-            ppid=$((ppid+2))
-            kill "$ppid"
-            rm /var/run/my_process.pid
-        fi
+        stopfn
         echo "manage_my_process stopped"
-        exit
         ;;
     start)
         echo "manage_my_process started"
-        sudo -b ./manage_my_process & jobs -p > $filename
-        exit
+        startfn
     ;;
      restart)
-          if [[ -e $filename ]]; then
-            ppid=$(cat $filename)
-            ppid=$((ppid+2))
-            kill "$ppid"
-            rm /var/run/my_process.pid
-        fi
-            sudo -b ./manage_my_process & jobs -p > $filename
-             echo "manage_my_process restarted"
+         stopfn
+         startfn
+         echo "manage_my_process restarted"
     ;;
     *)
-    echo "Usage: manage_my_process {start|stop|restart}"
+        echo "Usage: manage_my_process {start|stop|restart}"
     ;;
 esac
