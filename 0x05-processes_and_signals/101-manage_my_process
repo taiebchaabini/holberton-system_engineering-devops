@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+# Script that manages manage_my_process
+$nbargs;
+$filename;
+$ppid;
+nbargs=${#@}
+if ((nbargs == 0)) || ((nbargs > 1)); then
+    echo "Usage: manage_my_process {start|stop|restart}"
+    exit;
+fi
+filename="/var/run/my_process.pid"
+case "$1" in
+    stop)
+        if [[ -e $filename ]]; then
+            ppid=$(cat $filename)
+            ppid=$((ppid+2))
+            kill "$ppid"
+            rm /var/run/my_process.pid
+        fi
+        echo "manage_my_process stopped"
+        exit
+        ;;
+    start)
+        echo "manage_my_process started"
+        sudo -b ./manage_my_process & jobs -p > $filename
+        exit
+    ;;
+     restart)
+          if [[ -e $filename ]]; then
+            ppid=$(cat $filename)
+            ppid=$((ppid+2))
+            kill "$ppid"
+            rm /var/run/my_process.pid
+        fi
+            sudo -b ./manage_my_process & jobs -p > $filename
+             echo "manage_my_process restarted"
+    ;;
+    *)
+    echo "Usage: manage_my_process {start|stop|restart}"
+    ;;
+esac
