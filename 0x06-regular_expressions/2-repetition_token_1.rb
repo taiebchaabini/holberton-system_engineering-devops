@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-regex = /hbt{0,1}n/
+regex = /hb{0,1}tn/
 occurs = ARGV[0].scan(regex)
 for i in occurs
 	print i
