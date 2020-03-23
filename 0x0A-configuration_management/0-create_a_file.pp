@@ -1,6 +1,6 @@
 # Create a new file Holberton in tmp directory
 file { "/etc/holberton": 
-	ensure	=> 'file',
+	ensure	=> present,
 	owner	=> 'www-data',
 	group	=> 'www-data',
 	mode	=> '0744',
