@@ -1,5 +1,5 @@
 # Create a new file Holberton in tmp directory
-file { "/tmp/holberton": 
+file { '/tmp/holberton': 
 	ensure	=> present,
 	owner	=> 'www-data',
 	group	=> 'www-data',
