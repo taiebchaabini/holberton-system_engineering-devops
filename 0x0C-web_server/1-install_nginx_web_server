@@ -2,5 +2,18 @@
 # Install nginx web server 
 sudo apt-get update && apt-get upgrade -y
 sudo apt-get install nginx -y
+if [ -f /var/www/html/index.nginx-debian.html ]; then
 sudo echo "Holberton School" | sudo tee /var/www/html/index.nginx-debian.html
+fi
+if [ -f /usr/share/nginx/html/index.html ]; then
 sudo echo "Holberton School" | sudo tee /usr/share/nginx/html/index.html
+fi
+if [ -f /etc/nginx/sites-enabled/default ]; then
+	sed -i 's/listen * default_server/listen 80 default_server/g' /etc/nginx/sites-enabled/default
+	sed -i 's/listen [::]:*_default_server/listen [::]:80_default_server/g' /etc/nginx/sites-enabled/default
+fi	
+if [ -f /etc/nginx/nginx.conf ]; then
+	sed -i 's/listen * default_server/listen 80 default_server/g' /etc/nginx/nginx.conf
+	sed -i 's/listen [::]:*_default_server/listen [::]:80_default_server/g' /etc/nginx/nginx.conf
+fi
+sudo systemctl restart nginx
