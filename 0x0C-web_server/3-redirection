@@ -2,3 +2,4 @@
 # Redirect page /redirect_me to another page
 config_file=/etc/nginx/sites-enabled/default
 sed -i -E "0,/listen \[::]:[0-9]+ .+;/s//& \n rewrite \^\/redirect_me\$ https:\/\/www.youtube.com\/watch\?v=QH2-TGUlwu4 redirect\;/" "$config_file"
+sudo service nginx restart
