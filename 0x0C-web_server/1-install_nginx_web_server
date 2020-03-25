@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 # Install nginx web server 
 apt-get install nginx -y
+sudo chown -R ubuntu:ubuntu /var/www
 echo "Hello Holberton" > /var/www/html/index.nginx-debian.html
