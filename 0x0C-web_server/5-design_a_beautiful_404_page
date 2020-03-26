@@ -1,3 +1,4 @@
+CTYPE html>
 <html lang="en"><head>
   <meta charset="utf-8">
 
@@ -24,35 +25,35 @@ article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup, 
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-size: 100%;
+        font: inherit;
+        vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
-	display: block;
+        display: block;
 }
 body {
-	line-height: 1;
+        line-height: 1;
 }
 ol, ul {
-	list-style: none;
+        list-style: none;
 }
 blockquote, q {
-	quotes: none;
+        quotes: none;
 }
 blockquote:before, blockquote:after,
 q:before, q:after {
-	content: '';
-	content: none;
+        content: '';
+        content: none;
 }
 table {
-	border-collapse: collapse;
-	border-spacing: 0;
+        border-collapse: collapse;
+        border-spacing: 0;
 }
   </style>
 
@@ -62,10 +63,13 @@ table {
 <body style="background: url('http://taiebchaabini.tech/img/bg.jpg');display: flex;width: 100%;flex-direction: column;text-align: center;height: 100%;min-height: 100vh;justify-content: center;background-size: cover;">
   <div style="background: #ffffffb5;max-width: 80%;padding: 40px;align-self: center;min-width: 25%;border-radius: 5px;">
 
-<h1 style="text-transform: uppercase;margin-bottom: 15px;font-weight: bold;">404 Page</h1><h2 style="margin-bottom: 15px;">Ceci n'est pas une page</h2>
-<a href="/" style="/*! background: red; */"><button style="background: #c64040;border: 0;padding: 5px 20px;color: white;border-radius: 5px;">RETOUR AU SITE PRINCIPAL</button></a></div>
+<h1 style="text-transform: uppercase;margin-bottom: 15px;font-weight: bold;font-size: 45px;">404 Page</h1><h2 style="margin-bottom: 15px;">Ceci n'est pas une page</h2>
+<a href="/" style="/*! background: red; */"><button style="background: #070e14;border: 0;padding: 5px 20px;color: white;border-radius: 5px;">RETOUR AU SITE PRINCIPAL</button></a></div>
   
 
   
 
-<style type="text/css"></style></body></html>
+<style type="text/css"></style>
+</body></html>
+
+
