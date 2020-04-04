@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Install and Configure HAproxy with version equal or greater than 1.5 so that it send traffic to web-01 and web-02 
+config_file=/etc/nginx/sites-enabled/default;
+sudo apt-get install software-properties-common
+sudo add-apt-repository ppa:vbernat/haproxy-1.8
+apt-get update
+apt-get install haproxy=1.8.\*
