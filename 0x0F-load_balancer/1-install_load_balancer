@@ -5,6 +5,6 @@ sudo add-apt-repository ppa:vbernat/haproxy-1.8
 apt-get update
 apt-get install haproxy=1.8.\*
 echo "ENABLED=1" | sudo tee /etc/default/haproxy
-sudo mv haproxy.cfg{,.old} && curl -s
-"https://raw.githubusercontent.com/taiebchaabini/holberton-system_engineering-devops/master/0x0F-load_balancer/haproxy.cfg"
-| sudo tee /etc/haproxy/haproxy.cfg && /etc/init.d/haproxy start
+sudo mv haproxy.cfg haproxy.cfg.old
+curl -s "https://raw.githubusercontent.com/taiebchaabini/holberton-system_engineering-devops/master/0x0F-load_balancer/haproxy.cfg" | sudo tee /etc/haproxy/haproxy.cfg && /etc/init.d/haproxy start
+sudo /etc/init.d/haproxy restart
