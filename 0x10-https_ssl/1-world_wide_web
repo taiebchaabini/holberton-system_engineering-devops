@@ -13,7 +13,8 @@ custom_dig () {
             ANSWERLINE=$(dig "$SUB_DOMAIN"".""$DOMAIN" | awk "$REGEX")
             RECORD_TYPE=$(echo "$ANSWERLINE" | awk '{print $4}')
             DESTINATION=$(echo "$ANSWERLINE" | awk '{print $5}')
-            echo "The subdomain $SUB_DOMAIN is a $RECORD_TYPE record and points to $DESTINATION"
+            ANSWER="The subdomain $SUB_DOMAIN is a $RECORD_TYPE record and points to $DESTINATION"
+            awk -v ANSWER="$ANSWER" 'BEGIN {print ANSWER}'
         done
     fi
 }
