@@ -2,7 +2,6 @@
 # Output: The subdomain [SUB_DOMAIN] is a [RECORD_TYPE] record and points to [DESTINATION]
 DOMAIN=$1
 SUB_DOMAINS=('www' 'lb-01' 'web-01' 'web-02')
-REGEX="/IN.+*+*[0-9]/"
 
 custom_dig () {
     if [[ $1 =~ [a-z] ]]; then
@@ -10,7 +9,7 @@ custom_dig () {
             SUB_DOMAINS=("$2")
         fi
         for SUB_DOMAIN in "${SUB_DOMAINS[@]}"; do
-            ANSWERLINE=$(dig "$SUB_DOMAIN"".""$DOMAIN" | awk "$REGEX")
+            ANSWERLINE=$(dig "$SUB_DOMAIN"".""$DOMAIN" | grep -A1 'ANSWER SECTION:' | tail -n1 )
             RECORD_TYPE=$(echo "$ANSWERLINE" | awk '{print $4}')
             DESTINATION=$(echo "$ANSWERLINE" | awk '{print $5}')
             ANSWER="The subdomain $SUB_DOMAIN is a $RECORD_TYPE record and points to $DESTINATION"
