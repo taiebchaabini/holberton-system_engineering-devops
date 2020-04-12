@@ -4,7 +4,7 @@ sudo apt-get install ufw
 sudo ufw allow 8080/tcp
 config="*nat\n\
 :PREROUTING ACCEPT [0:0]\n\
--A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080\n\
+-A PREROUTING -p tcp --dport 8080 -j REDIRECT --to-port 80\n\
 COMMIT"
 sudo sed "1 a $config" -i /etc/ufw/before.rules
 sudo service ufw restart
