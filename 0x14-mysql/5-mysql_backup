@@ -2,7 +2,7 @@
 # Script for backing up a databases : MySQL dump must contain all MySQL 
 # databases
 if [[ $# -eq 1 ]]; then
-current_date=$(date '+%d-%m-%y')
+current_date=$(date '+%d-%m-%Y')
 mysqldump -h localhost -u root -p"$1"  --all-databases  > backup.sql && 
 echo "backup.sql" && gzip backup.sql > "$current_date".tar.gz 
 fi
