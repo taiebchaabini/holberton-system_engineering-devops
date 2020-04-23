@@ -3,6 +3,6 @@
 # databases
 if [[ $# -eq 1 ]]; then
 current_date=$(date '+%d-%m-%y')
-mysqldump -u root -p"$1"  --all-databases  > backup.sql && 
-echo "backup.sql" && cat backup.sql | gzip -c > "$current_date".tar.gz 
+mysqldump -h localhost -u root -p"$1"  --all-databases  > backup.sql && 
+echo "backup.sql" && gzip backup.sql > "$current_date".tar.gz 
 fi
