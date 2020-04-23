@@ -4,5 +4,5 @@
 if [[ $# -gt 0 ]]; then
 current_date=$(date '+%d-%m-%y')
 mysqldump -u root -p"$1"  --all-databases  > backup.sql && 
-echo "backup.sql" && gzip -c backup.sql > "$current_date".tar.gz 
+echo "backup.sql" && cat backup.sql | gzip -c > "$current_date".tar.gz 
 fi
