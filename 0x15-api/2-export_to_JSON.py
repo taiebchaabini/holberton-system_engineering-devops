@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """ Python script that, using a REST API, for a given employee ID, returns
-information about his/her TODO list progress and export data to CSV """
+information about his/her TODO list progress and export data to JSON """
 import csv
 from collections import OrderedDict
 import json
