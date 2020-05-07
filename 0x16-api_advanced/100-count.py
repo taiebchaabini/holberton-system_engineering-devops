@@ -47,11 +47,10 @@ def count_words(subreddit, word_list, after='', occurs={}):
                                          get_title)[1]
         except:
             pass
-        afterVal = data['data']['after']
+    afterVal = data['data']['after']
     if (afterVal is not None):
         return count_words(subreddit, word_list, afterVal, occurs)
     else:
-        for key, val in sorted(occurs.items(), key=lambda k: (k[1], k[0]),
-                               reverse=True):
-            print("{}: {}".format(key, val))
+        for key in sorted(occurs, key=lambda k: (-occurs[k], k)):
+            print("{}: {}".format(key, occurs[key]))
         return
