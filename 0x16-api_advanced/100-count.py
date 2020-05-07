@@ -25,14 +25,11 @@ def count_words(subreddit, word_list, after='', occurs={}):
     try:
         data = response.json()
     except:
-        print("")
         return
     if (str(response.status_code) == '404'):
-        print("")
         return
     dataLength = len(data['data']['children'])
     if (dataLength is 0):
-        print("")
         return
     for i in range(0, dataLength):
         try:
