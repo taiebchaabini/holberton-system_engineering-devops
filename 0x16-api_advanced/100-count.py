@@ -40,7 +40,7 @@ def count_words(subreddit, word_list, after='', occurs={}):
                 except KeyError:
                     occurs[a] = 0
                 finally:
-                    occurs[a] += re.subn(r'\b{}\b'.format(a), '',
+                    occurs[a] += re.subn(r'(?i)\b{}\b'.format(a), '',
                                          get_title)[1]
         except:
             pass
