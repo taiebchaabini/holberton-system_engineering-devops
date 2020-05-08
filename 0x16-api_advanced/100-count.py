@@ -5,9 +5,8 @@
     delimited by spaces. Javascript should count as javascript, but java should
     not).
 """
-import json
-import requests
 import re
+import requests
 headers = {'user-agent': 'linux:taiebchaabini.tech:v1\
  (by /u/taiebchaabini)'}
 
@@ -48,6 +47,6 @@ def count_words(subreddit, word_list, after='', occurs={}):
         return count_words(subreddit, word_list, afterVal, occurs)
     else:
         for key in sorted(occurs, key=lambda k: (-occurs[k], k)):
-            if (occurs[key] > 0):
+            if (occurs[key] >= 0):
                 print("{}: {}".format(key, occurs[key]))
         return
