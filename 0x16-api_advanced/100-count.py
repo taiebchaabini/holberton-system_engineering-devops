@@ -50,7 +50,7 @@ def count_words(subreddit, word_list, after='', occurs={}):
     else:
         if len(occurs) is 0:
             return
-        for key in sorted(occurs, key=lambda k: (occurs[k], k), reverse=True):
+        for key in sorted(occurs, key=lambda k: (-occurs[k], k)):
             if (occurs[key] > 0):
                 print("{}: {}".format(key, occurs[key]))
         return
