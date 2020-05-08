@@ -20,8 +20,7 @@ def count_words(subreddit, word_list, after='', occurs={}):
         Javascript should count as javascript, but java should not).
     """
     url = 'https://api.reddit.com/r/' + subreddit + '?limit=100&after=' + after
-    response = requests.get(url,
-                            headers=headers)
+    response = requests.get(url, headers=headers)
     try:
         data = response.json()
     except:
@@ -40,7 +39,7 @@ def count_words(subreddit, word_list, after='', occurs={}):
                 except KeyError:
                     occurs[a] = 0
                 finally:
-                    occurs[a] += re.subn(r'(?i)(^|\s){}(\s|$)'.format(a), '',
+                    occurs[a] += re.subn(r'(?i)(^|\s){}+(\s|$)'.format(a), '',
                                          get_title)[1]
         except:
             pass
