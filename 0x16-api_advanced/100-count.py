@@ -39,8 +39,8 @@ def count_words(subreddit, word_list, after='', occurs={}):
                 except KeyError:
                     occurs[a] = 0
                 finally:
-                    occurs[a] += re.subn(r'(?i)(^|\s){}+(\s|$)'.format(a), '',
-                                         get_title)[1]
+                    occurs[a] += re.subn(r'(?i)(?<!\S)\b{}\b(?!\S)'.format(a),
+                                         '', get_title)[1]
         except:
             pass
     afterVal = data['data']['after']
