@@ -48,8 +48,6 @@ def count_words(subreddit, word_list, after='', occurs={}):
     if (afterVal is not None):
         return count_words(subreddit, word_list, afterVal, occurs)
     else:
-        if len(occurs) is 0:
-            return
         for key in sorted(occurs, key=lambda k: (-occurs[k], k)):
             if (occurs[key] > 0):
                 print("{}: {}".format(key, occurs[key]))
