@@ -31,6 +31,8 @@ def count_words(subreddit, word_list, after='', occurs={}):
     dataLength = len(data['data']['children'])
     if (dataLength is 0):
         return
+    if (len(occurs) is 0):
+        word_list = list(set(word_list))
     for i in range(0, dataLength):
         try:
             get_title = data['data']['children'][i]['data']['title']
